@@ -41,6 +41,7 @@ body{
 
 .header-item{
     font-family: Gilroy-Bold;
+    text-decoration: none;
     font-size: 18px;
     text-align: center;
     padding: 1em;
@@ -255,6 +256,11 @@ body{
 }
 p.about:not(:last-child){
     margin-bottom: 2.5em;
+}
+.warning{
+    padding: 1em 2em;
+    background-color: #ffb3b3;
+    border: 2px solid #ef5353;
 }
 
 

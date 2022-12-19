@@ -1,24 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Denis Novik</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="script" href="script.js">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="img/favicon/site.webmanifest">
+<?php
+require "connect_db.php";
+$query = "SELECT * FROM items";
+$stmt = $db->prepare($query);
+try {
+    $stmt->execute();
+    $items = $stmt->fetchAll();
+?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Denis Novik</title>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="script" href="script.js">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="img/favicon/site.webmanifest">
 
-</head>
-<body>
+    </head>
+    <body>
     <ul class="header container">
-            <li class="header-item">Home</li>
-            <li class="header-item">About me</li>
-            <li class="header-item">Skills</li>
-            <li class="header-item">Portfolio</li>
-            <li class="header-item">Contacts</li>
+        <li class="header-item">Home</li>
+        <li class="header-item">About me</li>
+        <li class="header-item">Skills</li>
+        <li class="header-item">Portfolio</li>
+        <li class="header-item">Contacts</li>
+        <a class="header-item" href="create.php">Append</a>
     </ul>
     <main>
         <div class="main-screen container">
@@ -31,14 +40,14 @@
         <div class="about-screen">
             <div class="about-title">About me</div>
             <div class="about-content"><p class="about">
-                Hi, I'm Denis – UX/UI designer from Minsk.<br>
-                I'm interested in design and everything connected with it.<br>
+                    Hi, I'm Denis – UX/UI designer from Minsk.<br>
+                    I'm interested in design and everything connected with it.<br>
                 </p>
                 <p class="about">I'm studying at courses "Web and mobile design
-                interfaces" in IT-Academy.<br>
+                    interfaces" in IT-Academy.<br>
                 </p>
                 <p class="about">Ready to implement excellent projects
-                 with wonderful people.
+                    with wonderful people.
                 </p>
             </div>
         </div>
@@ -94,19 +103,24 @@
         </div>
         <div class="portfolio-screen container">
             <div class="portfolio-title">Portfolio</div>
-            <div class="portfolio-works">
-                <div class="portfolio-work">
-                    <img class="work-img" src="img/media/0.png">
-                    <div class="work-title">Online fashion store - Homepage</div>
-                </div>
-                <div class="portfolio-work">
-                    <img class="work-img" src="img/media/1.png">
-                    <div class="work-title">Reebok Store - Concept</div>
-                </div>
-                <div class="portfolio-work">
-                    <img class="work-img" src="img/media/2.png">
-                    <div class="work-title">Braun Landing Page - Concept</div>
-                </div>
+                <div class="portfolio-works">
+                <?php
+
+                if (!count($items)){
+                    echo '<div class="main-subtitle" style="text-align: center;">Right now I do not have works in my portfolio.<br>They are going to appear soon!</div>';
+                } else {
+
+
+
+                    foreach ($items as $item) {?>
+                        <div class="portfolio-work" id="work-<?php echo $item['id'] ?>">
+                            <img class="work-img" src="data:image/jpeg;base64,<?=base64_encode($item['img'])?>">
+                            <div class="work-title"><?php echo $item['title'] ?></div>
+                        </div>
+                        <?php
+                        }
+                    }
+                ?>
             </div>
         </div>
         <div class="contacts-screen container">
@@ -122,5 +136,13 @@
             <div class="links-text">Like me on<br>LinkedIn, Instagram, Behance, Dribble</div>
         </div>
     </main>
-</body>
-</html>
+    </body>
+    </html>
+
+
+<?php
+}catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage() . "<br>";
+}
+?>
+
