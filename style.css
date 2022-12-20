@@ -17,6 +17,9 @@
     font-style: normal;
     }
 
+.clear{
+    all: unset;
+}
 body{
     font-family: Gilroy-Medium;
     padding-bottom: 120px;
@@ -48,8 +51,10 @@ body{
     color: #828282;
     cursor: pointer;
 }
-.header-item:first-child{
+.header-item_accent{
     color: black;
+    border: 1px solid black;
+    border-radius: 20px;
 }
 .main-screen{
     height: auto;
@@ -194,6 +199,8 @@ body{
     object-fit: cover;
 }
 .work-title{
+    text-decoration: none;
+    color: black;
     text-align: center;
     text-decoration-line: underline;
     text-decoration-color: black;
@@ -225,7 +232,6 @@ body{
     padding: 13px 30px;
     border-radius: 21px;
     background-color: black;
-    margin-bottom: 80px;
     color: #FFFFFF;
     cursor: pointer;
 
@@ -239,6 +245,7 @@ body{
     align-items: center;
     height: auto;
     margin-bottom: 40px;
+    margin-top: 80px;
 
     max-width: 340px;
     width: 70%;
@@ -261,6 +268,21 @@ p.about:not(:last-child){
     padding: 1em 2em;
     background-color: #ffb3b3;
     border: 2px solid #ef5353;
+}
+form{
+    font-size: 1.5em;
+    margin: 1em auto;
+    padding: 30px 20px 50px 20px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-width: 300px;
+    gap: 1.2em;
+}
+input{
+    width: 100%;
+    font-size: 1em;
 }
 
 

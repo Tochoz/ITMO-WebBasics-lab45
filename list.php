@@ -27,7 +27,7 @@ try {
         <li class="header-item">Skills</li>
         <li class="header-item">Portfolio</li>
         <li class="header-item">Contacts</li>
-        <a class="header-item" href="create.php">Append</a>
+        <a class="header-item header-item_accent" href="create.php">Append work</a>
     </ul>
     <main>
         <div class="main-screen container">
@@ -113,9 +113,9 @@ try {
 
 
                     foreach ($items as $item) {?>
-                        <div class="portfolio-work" id="work-<?php echo $item['id'] ?>">
+                        <div class="portfolio-work" id="work-<?= $item['id'] ?>">
                             <img class="work-img" src="data:image/jpeg;base64,<?=base64_encode($item['img'])?>">
-                            <div class="work-title"><?php echo $item['title'] ?></div>
+                            <a class="work-title" href="index.php?id=<?=$item['id']?>"><?= $item['title'] ?></a>
                         </div>
                         <?php
                         }

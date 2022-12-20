@@ -42,7 +42,10 @@ if(isset($_POST['submit'])){
             $stmt->execute([$title, $image]);
             echo '<script>alert("Запись успешно добавлена в базу.")</script>';
             $last_id = $db->lastInsertId();
-            header("Location: index.php?id=$last_id");
+            echo "<script>
+                    alert('Запись успешно добавлена в базу.');
+                    document.location.href='index.php?id=$last_id';
+                    </script>";
             die();
         } catch(PDOException $e) {
             echo "Connection failed: " . $e->getMessage() . "<br>";
@@ -55,68 +58,6 @@ if(isset($_POST['submit'])){
     }
 
 }
-//    $title = $_POST['new_title'];
-//    $target_dir = "img/media/";
-//    $target_name = basename($_FILES["fileToUpload"]["name"]);
-//    $uploadOk = 0;
-//    $imageFileType = strtolower(pathinfo($target_name,PATHINFO_EXTENSION));
-//    // Check if image file is a actual image or fake image
-//    if(isset($_POST["submit"])) {
-//        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-//        if($check !== false) {
-//            echo "File is an image - " . $check["mime"] . ".";
-//            $uploadOk = 1;
-//        } else {
-//            echo "File is not an image.";
-//            $uploadOk = 0;
-//        }
-//    }
-//    // Check if file already exists
-//    if (file_exists($target_name)) {
-//        echo "Sorry, file already exists.";
-//        $uploadOk = 0;
-//    }
-//
-//    // Check file size
-//    if ($_FILES["fileToUpload"]["size"] > 500000000) {
-//        echo "Sorry, your file is too large.";
-//        $uploadOk = 0;
-//    }
-//
-//    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "svg" ) {
-//        echo "Sorry, only JPG, JPEG, PNG & SVG files are allowed.";
-//        $uploadOk = 0;
-//    }
-//    // Check if $uploadOk is set to 0 by an error
-//    if ($uploadOk == 0) {
-//        echo "Sorry, your file was not uploaded.";
-//    // if everything is ok, try to upload file
-//    } else {
-//        $title = trim($title);
-//        $title = stripslashes($title);
-//        $title = htmlspecialchars($title);
-//        if (!$title){
-//            echo "Заголовок не может быть пустым. Портфолио не добавлено.";
-//        }
-//        else {
-//            $newId = mysqli_insert_id($conn);
-//            $target_name = $target_dir . $newId . '.' . $imageFileType;
-//            $sql = "INSERT INTO portfolio (Title, Url) VALUES ('" . $title . "', '" . $target_name . "')";
-//
-//            if (mysqli_query($conn, $sql)) {
-//                echo "New record created successfully";
-//                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_name)) {
-//                    echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded with " . $target_name . "name";
-//                } else {
-//                    echo "Sorry, there was an error uploading your file.";
-//                }
-//            } else {
-//                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-//            }
-//        }
-//    }
-//mysqli_close($conn);
-//}
 ?>
 
 <!DOCTYPE html>
@@ -128,16 +69,18 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
+<body class="container">
+<ul class="header container" >
+    <a class="header-item header-item_accent" href="list.php">На главную</a>
+<!--    <a class="header-item" href="index.php?id=--><?php //= $value["id"] ?><!--">Открыть работу</a>-->
+<!--    <a class="header-item" href="delete.php?id=--><?php //= $value["id"] ?><!--">Удалить</a>-->
+</ul>
 <form action="" method="POST" enctype="multipart/form-data">
-    <input type="text" name="new_title" placeholder="Заголовок">
-    <br>
-    Select image to upload:
-    <input type="file" name="img_upload" id="img_upload">
-    <br>
-    <button type="submit" name="submit">Добавить</button>
+    <div style="width: 100%;">Title: <input type="text" name="new_title" placeholder="Заголовок">
+    </div>
+    <div style="width: 100%;">Select image to upload:<br> <input type="file" name="img_upload" id="img_upload"></div>
+    <button class="contacts-button" style="display: block; margin: 0 auto" type="submit" name="submit">Добавить</button>
 </form>
 
-<a href="list.php">Назад</a>
 </body>
 </html>
