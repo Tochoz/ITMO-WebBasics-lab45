@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
             $imgOk = 0;
         }
     }
-    if ($imgOk && $_FILES["img_upload"]["size"] > 134217728) { // Max size 128M
+    if ($imgOk && $_FILES["img_upload"]["size"] > 15728640) { // Max size 15M
         $errors = $errors . "Изображение слишком большого изображения.<br>";
         $imgOk = 0;
     }
