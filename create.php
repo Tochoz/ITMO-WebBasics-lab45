@@ -71,15 +71,17 @@ if(isset($_POST['submit'])){
 <body class="container">
 <ul class="header container" >
     <a class="header-item header-item_accent" href="list.php">На главную</a>
-<!--    <a class="header-item" href="index.php?id=--><?php //= $value["id"] ?><!--">Открыть работу</a>-->
-<!--    <a class="header-item" href="delete.php?id=--><?php //= $value["id"] ?><!--">Удалить</a>-->
 </ul>
 <form action="" method="POST" enctype="multipart/form-data">
     <div style="width: 100%;">Title: <input type="text" name="new_title" placeholder="Заголовок">
     </div>
-    <div style="width: 100%;">Select image to upload:<br> <input type="file" name="img_upload" id="img_upload"></div>
+    <div style="width: 100%;">Select image to upload:<br> <input type="file" name="img_upload" id="img_upload" onchange="uploadFile()"></div>
     <button class="contacts-button" style="display: block; margin: 0 auto" type="submit" name="submit">Добавить</button>
+<!--    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>-->
 </form>
-
+<script>
+    function uploadFile(){
+    }
+</script>
 </body>
 </html>
