@@ -1,5 +1,7 @@
-## Главная страница 
-[localhost/list.php](localhost/list.php)
+# [Ссылка на развёрнутый сайт](1082601-co73864.tmweb.ru/list.php)
+
+
+Главной страницей является list.php
 
 # Конфигурация таблицы БД
 Имя базы данных "denisnovik"
@@ -8,7 +10,7 @@ create table denisnovik.items
 (
     id          int auto_increment,
     title       varchar(255) not null,
-    column_name longblob     not null,
+    img longblob     not null,
     constraint items_pk
     primary key (id)
 );
