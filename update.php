@@ -25,6 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <meta http-equiv="X-UA-Compatible" content="ie=edge">
                     <link rel="stylesheet" href="style.css">
                     <title>Работа <?= $value["id"] ?></title>
+                    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+                    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+                    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+                    <link rel="manifest" href="img/favicon/site.webmanifest">
                 </head>
                 <body>
                 <ul class="header container">
@@ -127,7 +131,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <link rel="stylesheet" href="style.css">
-                <title>Document</title>
+                <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+                <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+                <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+                <link rel="manifest" href="img/favicon/site.webmanifest">
+                <title>Errors</title>
             </head>
             <body class="container">
                 <div class='warning'><?= $errors ?></div>
