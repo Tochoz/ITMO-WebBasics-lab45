@@ -40,7 +40,6 @@ if(isset($_POST['submit'])){
         $stmt = $db->prepare($query);
         try {
             $stmt->execute([$title, $image]);
-            echo '<script>alert("Запись успешно добавлена в базу.")</script>';
             $last_id = $db->lastInsertId();
             echo "<script>
                     alert('Запись успешно добавлена в базу.');
